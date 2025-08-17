@@ -2,7 +2,7 @@ const sampleListings = [
     {
         owner : "gomtu_xyz",
         title : "Ranking tool",
-        description : "See your ranking in anty project",
+        description : "See your ranking in any project",
         link : "https://gomtu.xyz/",
     },
     {
