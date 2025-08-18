@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link } from "react-router-dom"
 
 function Listings() {
   const [listings, setListings] = useState([]);
@@ -11,6 +12,10 @@ function Listings() {
 
   return (
     <div className="p-4">
+      <Link to="/listings/new">
+        <button>Add tool</button>
+      </Link>
+
       <h1>All Tools</h1>
       <ul>
         {listings.map((listing) => (

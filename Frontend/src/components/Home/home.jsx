@@ -3,7 +3,10 @@ import Listings from '../Listings/listings'
 
 function home() {
   return (
+    <>
     <Listings />
+    </>
+    
   )
 }
 

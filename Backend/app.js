@@ -7,9 +7,9 @@ const app = express();
 const PORT = 3000;
 
 //middlewares
-app.use(cors({origin:'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 connectDB()
     .then(() => {
@@ -31,12 +31,21 @@ app.get("/api/listings", async (req, res) => {
     res.json(listings);
 })
 
+app.post("/api/listings", async (req, res) => {
+    try {
+        const newListing = new Listing(req.body);
+        await newListing.save();
+        res.status(201).json(newListing);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+})
+
 //Show Route
-app.get("/api/listings/:id", async(req, res) => {
-    let {id} = req.params;
+app.get("/api/listings/:id", async (req, res) => {
+    let { id } = req.params;
     const listing_id = await Listing.findById(id);
     res.json(listing_id);
 })
-
 
 
