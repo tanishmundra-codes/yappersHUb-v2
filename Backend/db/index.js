@@ -15,19 +15,17 @@ const connectDB = async () => {
 
 export default connectDB
 
-const initDB = async () => {
-    try {
-        await connectDB();
-        await Listing.deleteMany({});
-        await Listing.insertMany(initData.data);
-        console.log("Data initialised")
-    } catch (error) {
-        console.log("Error ocurred during data initialisation ", error);
-    }
+// const initDB = async () => {
+//     try {
+//         await connectDB();
+//         await Listing.deleteMany({});
+//         await Listing.insertMany(initData.data);
+//         console.log("Data initialised")
+//     } catch (error) {
+//         console.log("Error ocurred during data initialisation ", error);
+//     }
     
-}
-
-initDB();
+// }
 
 
 

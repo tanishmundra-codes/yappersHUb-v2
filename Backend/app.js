@@ -31,6 +31,7 @@ app.get("/api/listings", async (req, res) => {
     res.json(listings);
 })
 
+//Create Route
 app.post("/api/listings", async (req, res) => {
     try {
         const newListing = new Listing(req.body);
@@ -40,6 +41,30 @@ app.post("/api/listings", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 })
+
+//Edit Route
+// Edit Route
+app.put("/api/listings/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const editListing = await Listing.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true, runValidators: true }
+    );
+
+    if (!editListing) {
+      return res.status(404).json({ message: "Listing not found" });
+    }
+
+    console.log("Listing edited");
+    res.json(editListing);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 //Show Route
 app.get("/api/listings/:id", async (req, res) => {

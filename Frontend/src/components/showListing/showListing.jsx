@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function ShowListing() {
   const { id } = useParams();
@@ -24,7 +24,9 @@ function ShowListing() {
       <p>{listing.description}</p>
       <p>Price: {listing.price}</p>
       <img src={listing.image} alt="Image" />
-
+      <a href= {`/listings/${id}/edit`}>
+        <button>Edit</button>
+      </a>
     </div>
   );
 }
