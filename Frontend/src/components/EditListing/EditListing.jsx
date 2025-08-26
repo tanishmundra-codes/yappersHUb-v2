@@ -42,7 +42,7 @@ function EditListing() {
 
       if (res.ok) {
         console.log("Listing updated");
-        navigate(`/listings/${id}`); // ✅ redirect
+        navigate(`/listings/${id}`);
       } else {
         console.log("Failed to update listing");
       }

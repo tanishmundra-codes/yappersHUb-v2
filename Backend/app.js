@@ -42,7 +42,7 @@ app.post("/api/listings", async (req, res) => {
     }
 })
 
-//Edit Route
+
 // Edit Route
 app.put("/api/listings/:id", async (req, res) => {
   try {
@@ -65,6 +65,17 @@ app.put("/api/listings/:id", async (req, res) => {
   }
 });
 
+//Delete Route
+app.delete("/api/listings/:id", async (req, res) => {
+  try {
+    let {id} = req.params;
+    await Listing.findByIdAndDelete(id);
+    res.json({ message: "Listing deleted successfully!" });
+  } catch (error) {
+    console.log("Failed to delete listing :", error);
+  }
+
+})
 
 //Show Route
 app.get("/api/listings/:id", async (req, res) => {

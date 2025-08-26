@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate  } from "react-router-dom";
 
 function ShowListing() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
@@ -16,6 +17,13 @@ function ShowListing() {
     });
 }, [id]);
 
+  const handleDelete =  async () => {
+    await fetch(`http://localhost:3000/api/listings/${id}`, {
+      method : "DELETE"
+    });
+    navigate("/");
+  }
+
   if (!listing) return <p>Loading...</p>; // prevent crash
 
   return (
@@ -27,6 +35,7 @@ function ShowListing() {
       <a href= {`/listings/${id}/edit`}>
         <button>Edit</button>
       </a>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }
