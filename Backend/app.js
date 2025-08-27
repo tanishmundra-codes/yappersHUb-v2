@@ -42,7 +42,6 @@ app.post("/api/listings", async (req, res) => {
     }
 })
 
-
 // Edit Route
 app.put("/api/listings/:id", async (req, res) => {
   try {
@@ -83,5 +82,6 @@ app.get("/api/listings/:id", async (req, res) => {
     const listing_id = await Listing.findById(id);
     res.json(listing_id);
 })
+
 
 

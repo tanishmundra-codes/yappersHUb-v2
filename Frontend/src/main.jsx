@@ -12,18 +12,20 @@ import ShowListings from "./components/showListing/showListing"
 import Home from "./components/Home/home"
 import CreateListing from "./components/createListing/CreateListing"
 import EditListing from "./components/EditListing/EditListing"
+import Layout from "./Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Home />} />
-      <Route path="/listings/:id" element={<ShowListings />} />
-      <Route path="/listings/new" element={<CreateListing />} />
-      <Route path="/listings/:id/edit" element={<EditListing />}/>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="listings/:id" element={<ShowListings />} />
+      <Route path="listings/new" element={<CreateListing />} />
+      <Route path="listings/:id/edit" element={<EditListing />}/>
       <Route path="*" element={<div className="text-black text-center p-10">404 - Page Not Found</div>} />
-    </>
+    </Route>
   )
 );
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
