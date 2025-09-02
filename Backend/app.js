@@ -21,10 +21,6 @@ connectDB()
         console.log("Mongoose connecton failed ", err)
     })
 
-app.get("/", (req, res) => {
-    res.send("YappersHub")
-})
-
 //Index Route => tool's data
 app.get("/api/listings", async (req, res) => {
     const listings = await Listing.find({});

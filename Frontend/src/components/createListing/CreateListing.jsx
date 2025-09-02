@@ -12,14 +12,10 @@ function CreateListing() {
 
   const navigate = useNavigate();
       
-  // e.target.name → jo bhi input ka name="title" ya name="description" hai, wahi field update karega.
-  // e.target.value → input box me jo value hai.
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
     
-  // headers: { "Content-Type": "application/json" } → bata raha hai ki data JSON format me bheja ja raha hai.
-  // body: JSON.stringify(formData) → form ka pura data JSON string me backend ko bhejta hai.
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:3000/api/listings", {
@@ -133,7 +129,7 @@ function CreateListing() {
               </button>
             </div>
 
-            {/* Cancel/Back Button */}
+            {/*Home Button */}
             <div>
               <button
                 type="button"
